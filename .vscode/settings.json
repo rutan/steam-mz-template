@@ -1,0 +1,13 @@
+{
+  "[bat]": {
+    "files.encoding": "shiftjis",
+    "files.eol": "\r\n"
+  },
+  "cSpell.words": [
+    "asar",
+    "localplayer",
+    "plugindesc",
+    "rmmzproject",
+    "Steamworks"
+  ]
+}
