@@ -1,5 +1,14 @@
-import { relative } from "node:path";
+import { join, relative } from "node:path";
 import ignore from "ignore";
+import { APP_DIR_PATH } from "./electron/constants.mjs";
+import { readSyncRpgMakerPluginConfig } from "./electron/modules/rpgMakerConfig.mjs";
+
+const pluginConfig = readSyncRpgMakerPluginConfig(
+  join(APP_DIR_PATH, "js/plugins.js"),
+  "SteamPlugin"
+);
+const packageName = pluginConfig?.parameters?.packageName ?? "my-game";
+const useAsar = String(pluginConfig?.parameters?.useAsar ?? true) === "true";
 
 // パッケージに含めないファイルを指定
 const packageIgnore = ignore();
@@ -17,12 +26,9 @@ packageIgnore.add([
   "/app/save",
 ]);
 
-// Asar パッケージ化を行うかどうか
-const useAsar = process.env.SKIP_ASAR !== "1";
-
 export default {
   packagerConfig: {
-    name: "My Game",
+    name: packageName,
     asar: useAsar,
     ignore: (filePath) => {
       const relativePath = relative("/", filePath);

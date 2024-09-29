@@ -20,15 +20,37 @@
  * @text ■ 基本的な設定
  *
  * @param steamAppId
+ * @parent base
  * @text Steam App ID
  * @desc このゲームの Steam 上での App ID を指定します。
  * @type number
  * @default 0
  *
- * @param advanced
+ * @param packaging
+ * @text ■ パッケージ設定
+ *
+ * @param packageName
+ * @parent packaging
+ * @text パッケージ名
+ * @desc パッケージ化するときの名前を指定します。
+ * （半角英数字のみを推奨）
+ * @type string
+ * @default my-game
+ *
+ * @param useAsar
+ * @parent packaging
+ * @text ASAR アーカイブを利用するか
+ * @desc ゲーム内容を ASAR アーカイブファイルにまとめて、中身を覗きづらくするかを指定します。
+ * @type boolean
+ * @on 利用する
+ * @off 利用しない
+ * @default true
+ *
+ * @param methods
  * @text ■ 機能の設定
  *
  * @param useAltF4FullScreen
+ * @parent methods
  * @text Alt+Enterでフルスクリーン
  * @desc Alt+Enter押下でフルスクリーンにするか？
  * @type boolean
@@ -37,6 +59,7 @@
  * @default true
  *
  * @param useDeveloperToolsInDebugMode
+ * @parent methods
  * @text デバッグ起動時に開発者ツールを使用
  * @desc デバッグ起動時に開発者ツールを使用するか？
  * ※ビルド版では無効になります。

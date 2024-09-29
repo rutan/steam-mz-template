@@ -16,6 +16,10 @@ app.on("window-all-closed", () => {
   app.exit();
 });
 
+/**
+ * プラグイン設定を読み込む
+ * @returns {Promise<{ steamAppId: number, useDeveloperToolsInDebugMode: boolean } | undefined>}
+ */
 async function loadPluginConfig() {
   const pluginConfig = await readRpgMakerPluginConfig(
     join(APP_DIR_PATH, "js/plugins.js"),
