@@ -29,17 +29,12 @@ packageIgnore.add([
 export default {
   packagerConfig: {
     name: packageName,
-    asar: useAsar,
+    asar: useAsar && {
+      unpackDir: 'node_modules/steamworks.js/dist',
+    },
     ignore: (filePath) => {
       const relativePath = relative("/", filePath);
       return packageIgnore.ignores(relativePath);
     },
-  },
-  plugins: [
-    // steamworks.js などの native モジュールを asar から除外するためのプラグイン
-    useAsar && {
-      name: "@electron-forge/plugin-auto-unpack-natives",
-      config: {},
-    },
-  ].filter(Boolean),
+  }
 };
