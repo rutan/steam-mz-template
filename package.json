@@ -15,6 +15,7 @@
     "@electron-forge/cli": "^7.5.0",
     "cpx2": "^7.0.1",
     "electron": "^32.1.2",
-    "ignore": "^6.0.2"
+    "ignore": "^6.0.2",
+    "png-to-ico": "^2.1.8"
   }
 }

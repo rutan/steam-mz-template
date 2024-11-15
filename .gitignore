@@ -8,3 +8,4 @@ Thumbs.db
 /.cache
 /node_modules
 /out
+/tmp
