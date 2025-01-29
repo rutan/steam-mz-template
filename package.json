@@ -1,6 +1,7 @@
 {
   "name": "steam-mz-template",
   "version": "0.0.0",
+  "author": "",
   "type": "module",
   "main": "electron/main.mjs",
   "scripts": {

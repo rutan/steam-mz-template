@@ -37,6 +37,22 @@
  * @type string
  * @default my-game
  *
+ * @param packageVersion
+ * @parent packaging
+ * @text バージョン情報
+ * @desc パッケージ化するときのバージョン情報を指定します。
+ * 例: 1.0.0
+ * @type string
+ * @default 1.0.0
+ *
+ * @param packageCopyright
+ * @parent packaging
+ * @text 著作情報
+ * @desc パッケージ化するときの著作情報を指定します。
+ * 例: (c) 2025 Ruたん
+ * @type string
+ * @default RPG Maker MZ
+ *
  * @param useAsar
  * @parent packaging
  * @text ASAR アーカイブを利用するか

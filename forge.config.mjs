@@ -10,6 +10,8 @@ const pluginConfig = readSyncRpgMakerPluginConfig(
   "SteamPlugin"
 );
 const packageName = pluginConfig?.parameters?.packageName ?? "my-game";
+const packageVersion = pluginConfig?.parameters?.packageVersion ?? "0.0.0";
+const packageCopyright = pluginConfig?.parameters?.packageCopyright ?? "";
 const useAsar = String(pluginConfig?.parameters?.useAsar ?? true) === "true";
 
 // パッケージに含めないファイルを指定
@@ -44,6 +46,8 @@ export default {
       const relativePath = relative("/", filePath);
       return packageIgnore.ignores(relativePath);
     },
+    appVersion: packageVersion,
+    appCopyright: packageCopyright,
   },
   hooks: {
     // パッケージング前にアイコンを用意するフック
