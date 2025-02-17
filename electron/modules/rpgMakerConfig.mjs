@@ -44,10 +44,20 @@ export function readSyncRpgMakerPluginConfig(pluginsJsPath, pluginName) {
 }
 
 function parsePluginJs(pluginJs) {
-  return JSON.parse(
-    `[${pluginJs
-      .split(/\r?\n/)
-      .filter((line) => line.startsWith("{"))
-      .join("")}]`
-  );
+  const jsonString = pluginJs
+    .split(/\r?\n/)
+    .filter((line) => {
+      // コメント行を削除
+      if (line.startsWith("//")) return false;
+
+      // var $plugins = 行を削除
+      if (line.startsWith("var $plugins =")) return false;
+
+      return true;
+    })
+    .join("")
+    .trim()
+    .replace(/;$/, ""); // 末尾のセミコロンを除去
+
+  return JSON.parse(jsonString);
 }
