@@ -13,10 +13,10 @@
     "steamworks.js": "^0.4.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "^7.5.0",
-    "cpx2": "^7.0.1",
-    "electron": "^32.1.2",
-    "ignore": "^6.0.2",
-    "png-to-ico": "^2.1.8"
+    "@electron-forge/cli": "^7.11.1",
+    "cpx2": "^8.0.0",
+    "electron": "^40.0.0",
+    "ignore": "^7.0.5",
+    "png-to-ico": "^3.0.1"
   }
 }

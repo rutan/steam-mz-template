@@ -1,6 +1,6 @@
 import { join } from "node:path";
-import { readFile } from "node:fs/promises";
-import { readRpgMakerPluginConfig } from "./modules/rpgMakerConfig.mjs";
+import { readFileSync } from "node:fs";
+import { readSyncRpgMakerPluginConfig } from "./modules/rpgMakerConfig.mjs";
 import { APP_DIR_PATH } from "./constants.mjs";
 import { app, BrowserWindow } from "electron";
 import { registerBridge } from "./modules/bridge.mjs";
@@ -18,25 +18,27 @@ app.on("window-all-closed", () => {
 
 /**
  * プラグイン設定を読み込む
- * @returns {Promise<{ steamAppId: number, useDeveloperToolsInDebugMode: boolean } | undefined>}
+ * @returns {{ steamAppId: number, useDeveloperToolsInDebugMode: boolean } | undefined}
  */
-async function loadPluginConfig() {
-  const pluginConfig = await readRpgMakerPluginConfig(
+function loadPluginConfig() {
+  const pluginConfig = readSyncRpgMakerPluginConfig(
     join(APP_DIR_PATH, "js/plugins.js"),
-    "SteamPlugin"
+    "SteamPlugin",
   );
   if (!pluginConfig) return;
 
   return {
     steamAppId: Number(pluginConfig.parameters.steamAppId ?? 0),
     useDeveloperToolsInDebugMode:
-      String(pluginConfig.parameters.useDeveloperToolsInDebugMode ?? 'false') === "true",
+      String(
+        pluginConfig.parameters.useDeveloperToolsInDebugMode ?? "false",
+      ) === "true",
   };
 }
 
 (async () => {
   // ツクール側のプラグイン設定を読み込む
-  const pluginConfig = await loadPluginConfig();
+  const pluginConfig = loadPluginConfig();
 
   if (!pluginConfig) {
     console.error("SteamPlugin is not found.");
@@ -45,7 +47,7 @@ async function loadPluginConfig() {
 
   // ゲーム側のパッケージ情報から画面サイズを取得
   const appPackageJson = JSON.parse(
-    await readFile(join(APP_DIR_PATH, "package.json"))
+    readFileSync(join(APP_DIR_PATH, "package.json")),
   );
   const screenWidth = appPackageJson.window?.width ?? 816;
   const screenHeight = appPackageJson.window?.height ?? 624;
