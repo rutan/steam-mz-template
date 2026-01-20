@@ -7,6 +7,114 @@
 
 /*:
  * @target MZ
+ * @plugindesc Steam Plugin for Steam Template
+ * @author Rutan (ru_shalm)
+ * @url https://github.com/rutan/steam-mz-template
+ * @license MIT License
+ * @base PluginCommonBase
+ * @orderAfter PluginCommonBase
+ * @help
+ * This is a plugin for the Steam template.
+ *
+ * @param base
+ * @text ■ Basic Settings
+ *
+ * @param steamAppId
+ * @parent base
+ * @text Steam App ID
+ * @desc Specify the App ID of this game on Steam.
+ * @type number
+ * @default 0
+ *
+ * @param packaging
+ * @text ■ Packaging Settings
+ *
+ * @param packageName
+ * @parent packaging
+ * @text Package Name
+ * @desc Specify the name when packaging.
+ * (Alphanumeric characters only are recommended)
+ * @type string
+ * @default my-game
+ *
+ * @param packageVersion
+ * @parent packaging
+ * @text Version Information
+ * @desc Specify the version information when packaging.
+ * Example: 1.0.0
+ * @type string
+ * @default 1.0.0
+ *
+ * @param packageCopyright
+ * @parent packaging
+ * @text Copyright Information
+ * @desc Specify the copyright information when packaging.
+ * Example: (c) 2025 Rutan
+ * @type string
+ * @default RPG Maker MZ
+ *
+ * @param useAsar
+ * @parent packaging
+ * @text Use ASAR Archive?
+ * @desc Specify whether to bundle the game content into an ASAR archive file to make it harder to view the contents.
+ * @type boolean
+ * @on Use
+ * @off Do not use
+ * @default true
+ *
+ * @param methods
+ * @text ■ Feature Settings
+ *
+ * @param useAltF4FullScreen
+ * @parent methods
+ * @text Alt+Enter for Full Screen
+ * @desc Should Alt+Enter toggle fullscreen?
+ * @type boolean
+ * @on Yes
+ * @off No
+ * @default true
+ *
+ * @param useDeveloperToolsInDebugMode
+ * @parent methods
+ * @text Use Developer Tools in Debug Mode
+ * @desc Should developer tools be used when launching in debug mode?
+ * * This will be disabled in the built version.
+ * @type boolean
+ * @on Yes
+ * @off No
+ * @default false
+ *
+ * @command setSwitchIsSteam
+ * @text Set Switch for Is Steam Build
+ * @desc Reflects whether the current build is a Steam build to the specified switch.
+ *
+ * @arg switchId
+ * @text Switch ID
+ * @desc The ID of the switch to which whether it is a Steam build will be reflected.
+ * @type switch
+ *
+ * @command activateAchievement
+ * @text Activate Steam Achievement
+ * @desc Activates the specified Steam achievement.
+ * Does nothing in non-Steam environments.
+ *
+ * @arg achievementName
+ * @text Achievement Name
+ * @desc Specify the name of the achievement to be unlocked.
+ * @type string
+ *
+ * @command openUrl
+ * @text Open Specified URL
+ * @desc Opens the specified URL in a browser.
+ *
+ * @arg url
+ * @text URL
+ * @desc Specify the URL to open.
+ * @type string
+ */
+
+/*:ja
+ * @target MZ
  * @plugindesc Steamテンプレート用プラグイン
  * @author Ruたん(ru_shalm)
  * @url https://github.com/rutan/steam-mz-template
