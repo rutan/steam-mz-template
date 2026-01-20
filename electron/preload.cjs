@@ -65,10 +65,10 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
-   * 実績の獲得
+   * 実績の獲得状態の確認
    * @param {string} achievementName
    */
-  activateAchievement(achievementName) {
+  isActivatedAchievement(achievementName) {
     return ipcRenderer.invoke("isActivatedAchievement", { achievementName });
   },
 
