@@ -25,14 +25,19 @@ async function registerBridgeAppBehavior(browserWindow) {
   });
 
   ipcMain.handle("openUrl", (_e, { url }) => {
-    shell.openExternal(url);
+    if (isValidWebUrl(url)) {
+      shell.openExternal(url);
+    }
     return true;
   });
 
   // ゲーム内から開いた外部リンクをデフォルトのブラウザで開く
   browserWindow.webContents.setWindowOpenHandler(({ url }) => {
-    shell.openExternal(url);
-    return { action: "deny" };
+    if (isValidWebUrl(url)) {
+      shell.openExternal(url);
+      return { action: "deny" };
+    }
+    return { action: "allow" };
   });
 }
 
@@ -111,4 +116,18 @@ async function registerBridgeAchievements(steamApi) {
   ipcMain.handle("deactivateAchievement", (_e, { achievementName }) => {
     return steamApi.client.achievement.clear(achievementName);
   });
+}
+
+/**
+ * URLが有効なWebのURLかどうかを判定する
+ * @param {string} url
+ * @returns {boolean}
+ */
+function isValidWebUrl(url) {
+  try {
+    const parsedUrl = new URL(url);
+    return parsedUrl.protocol === "http:" || parsedUrl.protocol === "https:";
+  } catch {
+    return false;
+  }
 }
