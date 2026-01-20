@@ -1,5 +1,5 @@
 import { join, dirname } from "node:path";
-import { app, ipcMain } from "electron";
+import { app, shell, ipcMain } from "electron";
 import { Store } from "./Store.mjs";
 
 /**
@@ -9,9 +9,31 @@ import { Store } from "./Store.mjs";
  * @param {import('./steam.mjs').SteamApi} params.steamApi
  */
 export async function registerBridge({ browserWindow, steamApi }) {
+  await registerBridgeAppBehavior(browserWindow);
   await registerBridgeFullScreen(browserWindow);
   await registerBridgeStore(steamApi);
   await registerBridgeAchievements(steamApi);
+}
+
+/**
+ * アプリケーションの動作系の処理を登録
+ * @param {import('electron').BrowserWindow} browserWindow
+ */
+async function registerBridgeAppBehavior(browserWindow) {
+  ipcMain.handle("exitApp", () => {
+    browserWindow.close();
+  });
+
+  ipcMain.handle("openUrl", (_e, { url }) => {
+    shell.openExternal(url);
+    return true;
+  });
+
+  // ゲーム内から開いた外部リンクをデフォルトのブラウザで開く
+  browserWindow.webContents.setWindowOpenHandler(({ url }) => {
+    shell.openExternal(url);
+    return { action: "deny" };
+  });
 }
 
 /**
@@ -52,7 +74,7 @@ async function registerBridgeStore(steamApi) {
   const storePath = join(
     dirname(app.getPath("exe")),
     "save",
-    String(playerId.steamId64)
+    String(playerId.steamId64),
   );
   const store = new Store(storePath);
 

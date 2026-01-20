@@ -6,6 +6,21 @@ const applicationState = {
 
 contextBridge.exposeInMainWorld("steam", {
   /**
+   * アプリケーションの終了
+   */
+  exitApp() {
+    return ipcRenderer.invoke("exitApp");
+  },
+
+  /**
+   * 外部URLをブラウザで開く
+   * @param {string} url
+   */
+  openUrl(url) {
+    return ipcRenderer.invoke("openUrl", { url });
+  },
+
+  /**
    * セーブデータの読み込み
    * @param {string} saveName
    */

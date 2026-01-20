@@ -102,6 +102,15 @@
  * @text 実績名
  * @desc 達成する実績の名前を指定します
  * @type string
+ *
+ * @command openUrl
+ * @text 指定URLを開く
+ * @desc 指定したURLをブラウザで開きます。
+ *
+ * @arg url
+ * @text URL
+ * @desc 開くURLを指定します
+ * @type string
  */
 
 (() => {
@@ -282,6 +291,18 @@
   };
 
   // ---------------------------------------------------------------------------
+  // SceneManager
+
+  const upstream_SceneManager_terminate = SceneManager.terminate;
+  SceneManager.terminate = function () {
+    if (Utils.isSteam()) {
+      steam.exitApp();
+      return;
+    }
+    upstream_SceneManager_terminate.apply(this, arguments);
+  };
+
+  // ---------------------------------------------------------------------------
   // PluginCommand
 
   PluginManagerEx.registerCommand(
@@ -292,7 +313,7 @@
       if (switchId > 0) {
         $gameSwitches.setValue(switchId, Utils.isSteam());
       }
-    }
+    },
   );
 
   PluginManagerEx.registerCommand(
@@ -308,6 +329,19 @@
       if (achievementName && Utils.isSteam()) {
         steam.activateAchievement(achievementName);
       }
-    }
+    },
   );
+
+  PluginManagerEx.registerCommand(document.currentScript, "openUrl", (args) => {
+    const url = String(args.url).trim();
+
+    if (Utils.isSteam()) {
+      steam.openUrl(url);
+    } else if (Utils.isNwjs()) {
+      const nw = require("nw.gui");
+      nw.Shell.openExternal(url);
+    } else {
+      window.open(url);
+    }
+  });
 })();
