@@ -62,6 +62,15 @@
  * @off Do not use
  * @default true
  *
+ * @param useOutputPluginHeaders
+ * @parent packaging
+ * @text Use Plugin Header Output?
+ * @desc Specify whether to output the plugin header/license information to a file. This can be used for copyright notation, etc.
+ * @type boolean
+ * @on Use
+ * @off Do not use
+ * @default false
+ *
  * @param methods
  * @text ■ Feature Settings
  *
@@ -169,6 +178,15 @@
  * @on 利用する
  * @off 利用しない
  * @default true
+ *
+ * @param useOutputPluginHeaders
+ * @parent packaging
+ * @text プラグインヘッダー出力を利用するか
+ * @desc プラグインのヘッダー/ライセンス情報をファイルに出力するかを指定します。著作表記などに利用できます。
+ * @type boolean
+ * @on 利用する
+ * @off 利用しない
+ * @default false
  *
  * @param methods
  * @text ■ 機能の設定
