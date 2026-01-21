@@ -8,3 +8,4 @@ node_modules
 /template/app
 /template/out
 /template/tmp
+/template/*.html
