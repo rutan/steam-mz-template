@@ -1,5 +1,6 @@
 # RPG Maker MZ Template for Steam
 
+- English: [README.en.md](./README.en.md)
 - [更新履歴](./CHANGELOG.md)
 
 ## これはなに？

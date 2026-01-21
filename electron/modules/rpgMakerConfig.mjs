@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 
 /**
+ * Reads the RPG Maker MZ plugin configuration file.
  * ツクールMZのプラグイン設定ファイルの読み込み
  * @param {string} pluginsJsPath ツクールMZ の plugins.js のパス
  * @returns {Promise<Array<*>>}
@@ -12,6 +13,7 @@ export async function readRpgMakerPluginConfigAll(pluginsJsPath) {
 }
 
 /**
+ * Reads the specified RPG Maker MZ plugin configuration.
  * ツクールMZの指定プラグインの設定の読み込み
  * @param {string} pluginsJsPath ツクールMZ の plugins.js のパス
  * @param {string} pluginName プラグイン名
@@ -23,6 +25,7 @@ export async function readRpgMakerPluginConfig(pluginsJsPath, pluginName) {
 }
 
 /**
+ * Reads RPG Maker MZ plugin configuration file (synchronous version).
  * ツクールMZのプラグイン設定ファイルの読み込み（同期処理版）
  * @param {string} pluginsJsPath ツクールMZ の plugins.js のパス
  * @returns {Array<*>}
@@ -33,6 +36,7 @@ export function readSyncRpgMakerPluginConfigAllFromProject(pluginsJsPath) {
 }
 
 /**
+ * Reads the specified RPG Maker MZ plugin configuration (synchronous version).
  * ツクールMZの指定プラグインの設定の読み込み（同期処理版）
  * @param {string} pluginsJsPath ツクールMZ の plugins.js のパス
  * @param {string} pluginName プラグイン名

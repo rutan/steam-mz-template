@@ -2,6 +2,7 @@ import { access, mkdir, rename, writeFile, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 /**
+ * RPG Maker save data read/write
  * RPGツクール用のセーブデータの読み書き
  */
 export class Store {
@@ -10,6 +11,7 @@ export class Store {
   }
 
   /**
+   * Reads save data.
    * セーブデータの読み込み
    * @param {string} saveName
    * @returns
@@ -26,6 +28,7 @@ export class Store {
   }
 
   /**
+   * Writes save data.
    * セーブデータの書き込み
    * @param {string} saveName
    * @param {string} data
@@ -48,6 +51,7 @@ export class Store {
   }
 
   /**
+   * Checks if save data exists.
    * セーブデータが存在するか確認
    * @param {string} saveName
    * @returns
@@ -64,6 +68,7 @@ export class Store {
   }
 
   /**
+   * Deletes save data.
    * セーブデータの削除
    * @param {string} saveName
    */
@@ -77,6 +82,7 @@ export class Store {
   }
 
   /**
+   * Creates the save directory if it does not exist.
    * セーブ用のフォルダが存在しない場合に作成
    */
   async createDirectoryIfNotExists() {

@@ -3,6 +3,7 @@ import { app, shell, ipcMain } from "electron";
 import { Store } from "./Store.mjs";
 
 /**
+ * Registers processing for the bridge.
  * ブリッジ用の処理を登録
  * @param {Object} params
  * @param {Electron.BrowserWindow} params.browserWindow
@@ -16,6 +17,7 @@ export async function registerBridge({ browserWindow, steamApi }) {
 }
 
 /**
+ * Registers application behavior processing.
  * アプリケーションの動作系の処理を登録
  * @param {import('electron').BrowserWindow} browserWindow
  */
@@ -31,6 +33,7 @@ async function registerBridgeAppBehavior(browserWindow) {
     return true;
   });
 
+  // Handle external links opened from within the game
   // ゲーム内から開いた外部リンクをデフォルトのブラウザで開く
   browserWindow.webContents.setWindowOpenHandler(({ url }) => {
     if (isValidWebUrl(url)) {
@@ -42,6 +45,7 @@ async function registerBridgeAppBehavior(browserWindow) {
 }
 
 /**
+ * Registers full-screen related processing.
  * フルスクリーン系の処理を登録
  * @param {import('electron').BrowserWindow} browserWindow
  */
@@ -71,6 +75,7 @@ async function registerBridgeFullScreen(browserWindow) {
 }
 
 /**
+ * Registers save data related processing.
  * セーブデータ系の処理を登録
  * @param {import('./steam.mjs').SteamApi} steamApi
  */
@@ -101,6 +106,7 @@ async function registerBridgeStore(steamApi) {
 }
 
 /**
+ * Registers achievement related processing.
  * 実績系の処理を登録
  * @param {import('./steam.mjs').SteamApi} steamApi
  */
@@ -119,6 +125,7 @@ async function registerBridgeAchievements(steamApi) {
 }
 
 /**
+ * Checks if a URL is a valid web URL.
  * URLが有効なWebのURLかどうかを判定する
  * @param {string} url
  * @returns {boolean}

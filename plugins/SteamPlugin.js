@@ -331,6 +331,7 @@
   // StorageManager
 
   /**
+   * Is it in Steam mode for save data read/write?
    * Steam向けのセーブデータ読み書きを行うか？
    * @returns {boolean}
    */
@@ -339,9 +340,10 @@
   };
 
   /**
+   * Saves save data to Steam Cloud
    * Steam向けのセーブデータの保存
-   * @param {string} saveName セーブファイル名
-   * @param {string} zip セーブデータ
+   * @param {string} saveName Save file name / セーブファイル名
+   * @param {string} zip Save data / セーブデータ
    * @returns {Promise<void>}
    */
   StorageManager.saveToSteamCloud = function (saveName, zip) {
@@ -349,8 +351,9 @@
   };
 
   /**
+   * Loads save data from Steam Cloud
    * Steam向けのセーブデータの読み込み
-   * @param {string} saveName セーブファイル名
+   * @param {string} saveName Save file name / セーブファイル名
    * @returns {Promise<void>}
    */
   StorageManager.loadFromSteamCloud = function (saveName) {
@@ -358,8 +361,9 @@
   };
 
   /**
+   * Checks if save data exists for Steam
    * Steam向けのセーブデータが存在するか？
-   * @param {string} saveName セーブファイル名
+   * @param {string} saveName Save file name / セーブファイル名
    * @returns {Promise<boolean>}
    */
   StorageManager.steamCloudExists = function (saveName) {
@@ -367,8 +371,9 @@
   };
 
   /**
+   * Deletes save data for Steam
    * Steam向けのセーブデータの削除
-   * @param {string} saveName セーブファイル名
+   * @param {string} saveName Save file name / セーブファイル名
    * @returns {Promise<void>}
    */
   StorageManager.removeSteamCloud = function (saveName) {
@@ -376,8 +381,9 @@
   };
 
   /**
+   * Get the file name for Steam save data
    * Steam向けのセーブデータのファイル名
-   * @param {string} saveName セーブファイル名
+   * @param {string} saveName Save file name / セーブファイル名
    * @returns {string}
    */
   StorageManager.steamCloudFileName = function (saveName) {

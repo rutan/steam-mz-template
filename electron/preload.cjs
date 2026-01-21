@@ -6,6 +6,7 @@ const applicationState = {
 
 contextBridge.exposeInMainWorld("steam", {
   /**
+   * Exits the application.
    * アプリケーションの終了
    */
   exitApp() {
@@ -13,6 +14,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Opens an external URL in the browser.
    * 外部URLをブラウザで開く
    * @param {string} url
    */
@@ -21,6 +23,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Reads save data.
    * セーブデータの読み込み
    * @param {string} saveName
    */
@@ -31,6 +34,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Writes save data.
    * セーブデータの書き込み
    * @param {string} saveName
    * @param {string} zip
@@ -43,6 +47,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Checks for the existence of save data.
    * セーブデータの存在確認
    * @param {string} saveName
    */
@@ -53,6 +58,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Deletes save data.
    * セーブデータの削除
    * @param {string} saveName
    */
@@ -63,6 +69,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Gets the full screen state.
    * フルスクリーン状態の取得
    */
   isFullScreen() {
@@ -70,6 +77,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Sets the full screen state.
    * フルスクリーンの設定
    * @param {boolean} isFullScreen
    */
@@ -80,6 +88,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Checks if an achievement is activated.
    * 実績の獲得状態の確認
    * @param {string} achievementName
    */
@@ -88,6 +97,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Activates an achievement.
    * 実績の獲得
    * @param {string} achievementName
    */
@@ -96,6 +106,7 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Deactivates an achievement.
    * 実績の解除
    * @param {string} achievementName
    */

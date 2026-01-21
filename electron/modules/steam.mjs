@@ -10,6 +10,7 @@ export class SteamApi {
   #client = null;
 
   /**
+   * Initialize
    * クライアントの生成
    * @param {number} steamAppId
    */
@@ -18,6 +19,7 @@ export class SteamApi {
   }
 
   /**
+   * Steam client
    * Steamクライアント
    * @returns {import('steamworks.js').Client}
    */
@@ -26,6 +28,7 @@ export class SteamApi {
   }
 
   /**
+   * Initializes the Steam client.
    * Steamクライアントの初期化
    * @returns Steamクライアントの初期化に成功したかどうか
    */
@@ -39,10 +42,12 @@ export class SteamApi {
   }
 
   /**
+   * Checks if launched via Steam.
    * Steam経由での起動かどうかをチェック
    * @returns {boolean}
    */
   #checkLaunchBySteam() {
+    // If not packaged (i.e., during development), consider it launched via Steam
     // パッケージ化されていない場合（＝開発中）はSteam経由起動とみなす
     if (!app.isPackaged) return true;
 
