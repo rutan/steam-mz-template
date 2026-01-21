@@ -1,11 +1,10 @@
-# 必要に応じて app を gitignore から削除してください
-/app
-
-
 .DS_Store
 Thumbs.db
 
-/.cache
-/node_modules
-/out
-/tmp
+.cache
+node_modules
+
+# testing output
+/template/app
+/template/out
+/template/tmp

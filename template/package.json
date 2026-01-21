@@ -1,0 +1,23 @@
+{
+  "name": "steam-mz-template",
+  "version": "0.0.0",
+  "author": "",
+  "type": "module",
+  "main": "electron/main.mjs",
+  "scripts": {
+    "dev": "electron-forge start",
+    "package": "electron-forge package",
+    "copy-plugin": "cpx plugins/*.js app/js/plugins/"
+  },
+  "dependencies": {
+    "steamworks.js": "^0.4.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.11.1",
+    "acorn": "^8.15.0",
+    "cpx2": "^8.0.0",
+    "electron": "^40.0.0",
+    "ignore": "^7.0.5",
+    "png-to-ico": "^3.0.1"
+  }
+}
