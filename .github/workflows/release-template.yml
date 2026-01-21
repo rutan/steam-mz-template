@@ -30,9 +30,9 @@ jobs:
         run: |
           mkdir -p dist
           cd template
-          zip -r ../dist/template.zip .
+          zip -r ../dist/steam-mz-template-${{ github.ref_name }}.zip .
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         with:
-          files: dist/template.zip
+          files: dist/steam-mz-template-${{ github.ref_name }}.zip
