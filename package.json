@@ -6,11 +6,15 @@
     "build:readme": "node ./scripts/build-readme.mjs",
     "lint": "run-s lint:*",
     "lint:format": "oxfmt --check",
-    "format": "oxfmt"
+    "lint:oxlint": "oxlint",
+    "format": "run-s format:*",
+    "format:oxlint": "oxlint --fix",
+    "format:oxfmt": "oxfmt"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0",
     "npm-run-all2": "^8.0.4",
-    "oxfmt": "^0.26.0"
+    "oxfmt": "^0.26.0",
+    "oxlint": "^1.41.0"
   }
 }

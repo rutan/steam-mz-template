@@ -50,8 +50,6 @@ async function registerBridgeAppBehavior(browserWindow) {
  * @param {import('electron').BrowserWindow} browserWindow
  */
 async function registerBridgeFullScreen(browserWindow) {
-  browserWindow.fullScreen;
-
   ipcMain.handle("getFullScreen", (_e) => {
     return browserWindow.isFullScreen();
   });
