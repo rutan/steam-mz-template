@@ -3,10 +3,14 @@
   "private": true,
   "scripts": {
     "build": "run-s build:*",
-    "build:readme": "node ./scripts/build-readme.mjs"
+    "build:readme": "node ./scripts/build-readme.mjs",
+    "lint": "run-s lint:*",
+    "lint:format": "oxfmt --check",
+    "format": "oxfmt"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0",
-    "npm-run-all2": "^8.0.4"
+    "npm-run-all2": "^8.0.4",
+    "oxfmt": "^0.26.0"
   }
 }

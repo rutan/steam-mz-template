@@ -35,9 +35,7 @@ function loadPluginConfig() {
   return {
     steamAppId: Number(pluginConfig.parameters.steamAppId ?? 0),
     useDeveloperToolsInDebugMode:
-      String(
-        pluginConfig.parameters.useDeveloperToolsInDebugMode ?? "false",
-      ) === "true",
+      String(pluginConfig.parameters.useDeveloperToolsInDebugMode ?? "false") === "true",
   };
 }
 
@@ -51,9 +49,7 @@ function loadPluginConfig() {
 
   // Get the screen size from the game's package info
   // ゲーム側のパッケージ情報から画面サイズを取得
-  const appPackageJson = JSON.parse(
-    readFileSync(join(APP_DIR_PATH, "package.json")),
-  );
+  const appPackageJson = JSON.parse(readFileSync(join(APP_DIR_PATH, "package.json")));
   const screenWidth = appPackageJson.window?.width ?? 816;
   const screenHeight = appPackageJson.window?.height ?? 624;
 

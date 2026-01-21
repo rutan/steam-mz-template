@@ -9,6 +9,7 @@ This is a beginner-friendly template for packaging RPG Maker MZ projects for Ste
 The primary audience is Japanese users, but this English guide covers the minimum steps for global users.
 
 ## Downloading the Template
+
 Please download the latest version from the [Releases page](https://github.com/rutan/steam-mz-template/releases).
 Look for files named like `steam-mz-template-○.○.○.zip`.
 

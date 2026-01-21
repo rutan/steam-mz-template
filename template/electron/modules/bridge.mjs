@@ -81,11 +81,7 @@ async function registerBridgeFullScreen(browserWindow) {
  */
 async function registerBridgeStore(steamApi) {
   const playerId = steamApi.client.localplayer.getSteamId();
-  const storePath = join(
-    dirname(app.getPath("exe")),
-    "save",
-    String(playerId.steamId64),
-  );
+  const storePath = join(dirname(app.getPath("exe")), "save", String(playerId.steamId64));
   const store = new Store(storePath);
 
   ipcMain.handle("readSaveData", (_e, { saveName }) => {

@@ -30,6 +30,7 @@ node -v
 追加後、プラグイン設定の中にある項目を設定してください。
 
 #### 必須の項目
+
 - Steam App ID
   - Steam のアプリケーション作成をした際に発行される数値です
   - 詳しくは [Steamworksの公式ドキュメント](https://partner.steamgames.com/doc/store/application?l=japanese) をご確認ください

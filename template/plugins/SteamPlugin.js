@@ -437,32 +437,24 @@
   // ---------------------------------------------------------------------------
   // PluginCommand
 
-  PluginManagerEx.registerCommand(
-    document.currentScript,
-    "setSwitchIsSteam",
-    (args) => {
-      const switchId = Number(args.switchId);
-      if (switchId > 0) {
-        $gameSwitches.setValue(switchId, Utils.isSteam());
-      }
-    },
-  );
+  PluginManagerEx.registerCommand(document.currentScript, "setSwitchIsSteam", (args) => {
+    const switchId = Number(args.switchId);
+    if (switchId > 0) {
+      $gameSwitches.setValue(switchId, Utils.isSteam());
+    }
+  });
 
-  PluginManagerEx.registerCommand(
-    document.currentScript,
-    "activateAchievement",
-    (args) => {
-      const achievementName = String(args.achievementName).trim();
+  PluginManagerEx.registerCommand(document.currentScript, "activateAchievement", (args) => {
+    const achievementName = String(args.achievementName).trim();
 
-      if (Utils.isOptionValid("test")) {
-        console.log(`[Steam] Activate Achievement: ${achievementName}`);
-      }
+    if (Utils.isOptionValid("test")) {
+      console.log(`[Steam] Activate Achievement: ${achievementName}`);
+    }
 
-      if (achievementName && Utils.isSteam()) {
-        steam.activateAchievement(achievementName);
-      }
-    },
-  );
+    if (achievementName && Utils.isSteam()) {
+      steam.activateAchievement(achievementName);
+    }
+  });
 
   PluginManagerEx.registerCommand(document.currentScript, "openUrl", (args) => {
     const url = String(args.url).trim();

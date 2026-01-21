@@ -20,12 +20,7 @@ const useOutputPluginHeaders =
   String(pluginConfig?.parameters?.useOutputPluginHeaders ?? false) === "true";
 
 // パッケージに含めるディレクトリ・ファイル
-const includeDirsOrFiles = [
-  "/app",
-  "/electron",
-  "/node_modules",
-  "/package.json",
-];
+const includeDirsOrFiles = ["/app", "/electron", "/node_modules", "/package.json"];
 
 // パッケージに含めないファイルを指定
 const packageIgnore = ignore();
@@ -74,9 +69,7 @@ async function generatePluginHeadersFile() {
     console.log(`Processing: ${filePath}`);
     const code = await readFile(filePath, "utf-8");
     const result = await readPluginComment(code);
-    contents.push(
-      [`// ===== Plugin: ${basename(filePath)} =====`, result].join("\n"),
-    );
+    contents.push([`// ===== Plugin: ${basename(filePath)} =====`, result].join("\n"));
   }
 
   await writeFile(tmpPluginHeadersFilePath, contents.join("\n\n\n"), "utf-8");
@@ -104,9 +97,7 @@ export default {
     },
     appVersion: packageVersion,
     appCopyright: packageCopyright,
-    extraResource: [
-      useOutputPluginHeaders ? tmpPluginHeadersFilePath : undefined,
-    ].filter(Boolean),
+    extraResource: [useOutputPluginHeaders ? tmpPluginHeadersFilePath : undefined].filter(Boolean),
   },
   hooks: {
     prePackage: async () => {

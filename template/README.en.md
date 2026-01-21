@@ -29,6 +29,7 @@ Copy `plugins/SteamPlugin.js` into your game project and add it as a plugin.
 Then set the plugin parameters.
 
 Required parameter:
+
 - Steam App ID
   - The numeric ID assigned when you create your Steam app
   - See the [Steamworks docs](https://partner.steamgames.com/doc/store/application?l=english)
