@@ -7,14 +7,25 @@
     "lint": "run-s lint:*",
     "lint:format": "oxfmt --check",
     "lint:oxlint": "oxlint",
+    "lint:textlint": "textlint ./docs/**/*.md ./template/**/*.md",
     "format": "run-s format:*",
     "format:oxlint": "oxlint --fix",
-    "format:oxfmt": "oxfmt"
+    "format:oxfmt": "oxfmt",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
     "markdown-it": "^14.1.0",
     "npm-run-all2": "^8.0.4",
     "oxfmt": "^0.26.0",
-    "oxlint": "^1.41.0"
+    "oxlint": "^1.41.0",
+    "textlint": "^15.5.1",
+    "textlint-rule-no-mixed-zenkaku-and-hankaku-alphabet": "^1.0.1",
+    "textlint-rule-no-todo": "^2.0.1",
+    "textlint-rule-preset-ja-spacing": "^2.4.3",
+    "textlint-rule-preset-ja-technical-writing": "^12.0.2",
+    "textlint-rule-prh": "^6.1.0",
+    "vitepress": "^1.6.4"
   }
 }
