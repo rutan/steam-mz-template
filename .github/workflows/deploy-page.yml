@@ -8,6 +8,11 @@ on:
       - "docs/**"
       - ".github/workflows/deploy-page.yml"
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
