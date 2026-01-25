@@ -31,7 +31,7 @@ rules:
   - expected: PLiCy
   - expected: ウェブブラウザ
     pattern: /web[\s-]?ブラウザ|ウェブ[\s-]?ブラウザ|ブラウザ/i
-  - expected: "ゲーム制作者 または プレイヤー"
+  - expected: "ゲーム制作者"
     pattern: /ユーザー?/
     message: "「ユーザー」ではなく、「ゲーム制作者」または「プレイヤー」を使用してください。"
   - expected: ゲーム制作者
