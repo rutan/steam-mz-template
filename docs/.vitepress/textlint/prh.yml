@@ -1,0 +1,41 @@
+version: 1
+rules:
+  - expected: Windows
+  - expected: macOS
+    patterns:
+      - /macos/i
+      - /mac(?!OS)/i
+    specs:
+      - from: Macos
+        to: macOS
+      - from: Mac
+        to: macOS
+  - expected: Linux
+  - expected: GitHub
+  - expected: Steam
+  - expected: Steamworks
+  - expected: Steamworks SDK
+    pattern: /Steamworks[\s-]?SDK/
+  - expected: RPGツクールMZ
+    pattern: /RPGツクール\s*MZ|ツクールMZ/
+  - expected: テンプレート
+    pattern: /テンプレ(?!ート)/
+  - expected: JavaScript
+    pattern: /java[\s-]?script/i
+  - expected: TypeScript
+    pattern: /type[\s-]?script/i
+  - expected: Node.js
+    pattern: /node[\.\s-]?js/i
+  - expected: npm
+  - expected: URL
+  - expected: PLiCy
+  - expected: ウェブブラウザ
+    pattern: /web[\s-]?ブラウザ|ウェブ[\s-]?ブラウザ|ブラウザ/i
+  - expected: "ゲーム制作者 または プレイヤー"
+    pattern: /ユーザー?/
+    message: "「ユーザー」ではなく、「ゲーム制作者」または「プレイヤー」を使用してください。"
+  - expected: ゲーム制作者
+    patterns:
+      - /(?:ゲーム)?(制作者|製作者)/
+      - /開発者(?!ツール)/
+      - /クリエイター/

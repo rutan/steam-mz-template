@@ -9,3 +9,7 @@ node_modules
 /template/out
 /template/tmp
 /template/*.html
+
+# vitepress
+/docs/.vitepress/cache
+/docs/.vitepress/dist
