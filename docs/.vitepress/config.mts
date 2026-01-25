@@ -5,6 +5,7 @@ export default defineConfig({
   title: "RPGツクールMZ Steamテンプレート",
   description: "RPGツクールMZのSteam向けプロジェクトのテンプレート。",
   lastUpdated: true,
+  base: "/steam-mz-template/",
   themeConfig: {
     siteTitle: "MZ Steamテンプレート",
     search: {
