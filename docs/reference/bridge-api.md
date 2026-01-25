@@ -28,7 +28,7 @@ RPGツクールMZのSteamテンプレートには、ElectronとRPGツクールMZ
 
 セーブデータ名はファイル名に使用できる文字列である必要があります。
 
-## `window.steam.existsSaveData(): Promise<boolean>`
+## `window.steam.existsSaveData(saveName: string): Promise<boolean>`
 
 指定した名前のセーブデータが存在するかどうかを確認します。
 
