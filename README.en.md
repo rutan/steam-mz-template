@@ -17,5 +17,5 @@ For detailed instructions, refer to the included manual (`readme.en.html`) or th
 
 ## License
 
-- The Steam template itself is MIT licensed.
+- The Steam template itself is MIT No Attribution licensed.
 - Your game content remains yours.

@@ -31,5 +31,5 @@ features:
   - icon: ✨
     title: 無料＆改変自由
     details: |
-      このテンプレートはMITライセンスのもとで配布されており、無料で利用・改変が可能です。
+      このテンプレートは<a href="https://spdx.org/licenses/MIT-0.html">MIT No Attributionライセンス</a>のもとで配布されており、無料で利用・改変が可能です。
 ---
