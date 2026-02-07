@@ -10,7 +10,7 @@
  * @plugindesc Steam Plugin for Steam Template
  * @author Rutan (ru_shalm)
  * @url https://github.com/rutan/steam-mz-template
- * @license MIT License
+ * @license MIT No Attribution License (MIT-0)
  * @base PluginCommonBase
  * @orderAfter PluginCommonBase
  * @help
@@ -127,7 +127,7 @@
  * @plugindesc Steamテンプレート用プラグイン
  * @author Ruたん(ru_shalm)
  * @url https://github.com/rutan/steam-mz-template
- * @license MIT License
+ * @license MIT No Attribution License (MIT-0)
  * @base PluginCommonBase
  * @orderAfter PluginCommonBase
  * @help

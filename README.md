@@ -18,5 +18,5 @@ RPGツクールMZで制作したゲームを Steam 向けにパッケージ化�
 
 ## ライセンス
 
-- Steam向けプロジェクトのテンプレート自体は MIT License です
+- Steam向けプロジェクトのテンプレート自体は MIT No Attribution License です
 - ゲームはそれぞれの作者のものです
