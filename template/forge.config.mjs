@@ -7,6 +7,7 @@ import { APP_DIR_PATH } from "./electron/constants.mjs";
 import { readSyncRpgMakerPluginConfig } from "./electron/modules/rpgMakerConfig.mjs";
 import { searchJsFiles } from "./scripts/searchJsFiles.mjs";
 import { readPluginComment } from "./scripts/readPluginComment.mjs";
+import { readThirdPartyLicenses } from "./scripts/readThirdPartyLicenses.mjs";
 
 const pluginConfig = readSyncRpgMakerPluginConfig(
   join(APP_DIR_PATH, "js/plugins.js"),
@@ -37,6 +38,7 @@ const pngFilePath = join(APP_DIR_PATH, "icon/icon.png");
 const tmpDirPath = join("tmp");
 const tmpIconDirPath = join(tmpDirPath, "icon");
 const tmpPluginHeadersFilePath = join(tmpDirPath, "PLUGIN_HEADERS.txt");
+const tmpThirdPartyLicensesFilePath = join(tmpDirPath, "THIRD_PARTY_LICENSES.txt");
 
 function isTargetFile(filePath) {
   return includeDirsOrFiles.some((dirPath) => {
@@ -75,6 +77,12 @@ async function generatePluginHeadersFile() {
   await writeFile(tmpPluginHeadersFilePath, contents.join("\n\n\n"), "utf-8");
 }
 
+async function generateThirdPartyLicensesFile() {
+  await mkdir(tmpDirPath, { recursive: true });
+  const contents = await readThirdPartyLicenses();
+  await writeFile(tmpThirdPartyLicensesFilePath, contents, "utf-8");
+}
+
 export default {
   packagerConfig: {
     name: packageName,
@@ -97,13 +105,17 @@ export default {
     },
     appVersion: packageVersion,
     appCopyright: packageCopyright,
-    extraResource: [useOutputPluginHeaders ? tmpPluginHeadersFilePath : undefined].filter(Boolean),
+    extraResource: [
+      useOutputPluginHeaders ? tmpPluginHeadersFilePath : undefined,
+      tmpThirdPartyLicensesFilePath,
+    ].filter(Boolean),
   },
   hooks: {
     prePackage: async () => {
       if (useOutputPluginHeaders) {
         await generatePluginHeadersFile();
       }
+      await generateThirdPartyLicensesFile();
       await copyOrCreateIcon();
     },
   },
