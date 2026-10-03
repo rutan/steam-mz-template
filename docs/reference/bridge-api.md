@@ -36,8 +36,6 @@ RPGツクールMZのSteamテンプレートには、ElectronとRPGツクールMZ
 
 指定した名前のセーブデータが存在するかどうかを同期的に確認します。RPGツクールMZの `StorageManager.exists()` との互換性のために使用します。
 
-このAPIを利用する `SteamPlugin.js` に更新する際は、テンプレートの `electron` フォルダもあわせて更新してください。
-
 ローカルのセーブファイルを確認する間はゲームの処理が待機するため、非同期処理では `existsSaveData()` を使用してください。ファイルが存在しない場合は `false` を返し、それ以外の読み取りエラーは例外として通知します。
 
 ## `window.steam.removeSaveData(saveName: string): Promise<void>`
