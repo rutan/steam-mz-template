@@ -1,4 +1,5 @@
-import { access, mkdir, rename, writeFile, readFile } from "node:fs/promises";
+import { accessSync } from "node:fs";
+import { access, mkdir, rename, writeFile, readFile, unlink } from "node:fs/promises";
 import { join } from "node:path";
 
 /**
@@ -60,6 +61,23 @@ export class Store {
     const filePath = join(this.directory, saveName);
     try {
       await access(filePath);
+      return true;
+    } catch (e) {
+      if (e.code !== "ENOENT") throw e;
+      return false;
+    }
+  }
+
+  /**
+   * Checks if save data exists synchronously for RPG Maker's StorageManager.
+   * RPGツクールの StorageManager 向けにセーブデータの存在を同期的に確認
+   * @param {string} saveName
+   * @returns {boolean}
+   */
+  existsSync(saveName) {
+    const filePath = join(this.directory, saveName);
+    try {
+      accessSync(filePath);
       return true;
     } catch (e) {
       if (e.code !== "ENOENT") throw e;

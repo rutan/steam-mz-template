@@ -2,6 +2,7 @@
   "name": "steam-mz-repo",
   "private": true,
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
     "build": "run-s build:*",
     "build:readme": "node ./scripts/build-readme.mjs",
     "lint": "run-s lint:*",
