@@ -58,6 +58,22 @@ contextBridge.exposeInMainWorld("steam", {
   },
 
   /**
+   * Checks for save data synchronously for RPG Maker's StorageManager.
+   * RPGツクールの StorageManager 向けにセーブデータの存在を同期的に確認
+   * @param {string} saveName
+   * @returns {boolean}
+   */
+  existsSaveDataSync(saveName) {
+    const result = ipcRenderer.sendSync("existsSaveDataSync", { saveName });
+    if (result.error) {
+      const error = new Error(result.error.message);
+      error.code = result.error.code;
+      throw error;
+    }
+    return result.exists;
+  },
+
+  /**
    * Deletes save data.
    * セーブデータの削除
    * @param {string} saveName

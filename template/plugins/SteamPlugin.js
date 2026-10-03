@@ -364,10 +364,10 @@
    * Checks if save data exists for Steam
    * Steam向けのセーブデータが存在するか？
    * @param {string} saveName Save file name / セーブファイル名
-   * @returns {Promise<boolean>}
+   * @returns {boolean}
    */
   StorageManager.steamCloudExists = function (saveName) {
-    return steam.existsSaveData(this.steamCloudFileName(saveName));
+    return steam.existsSaveDataSync(this.steamCloudFileName(saveName));
   };
 
   /**
@@ -416,7 +416,7 @@
 
   const upstream_StorageManager_remove = StorageManager.remove;
   StorageManager.remove = function (saveName) {
-    if (this.isLocalMode()) {
+    if (this.isSteamMode()) {
       return this.removeSteamCloud(saveName);
     }
     return upstream_StorageManager_remove.apply(this, arguments);

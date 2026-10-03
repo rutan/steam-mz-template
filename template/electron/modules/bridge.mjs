@@ -94,6 +94,19 @@ async function registerBridgeStore(steamApi) {
     return store.exists(saveName);
   });
 
+  // RPG Maker expects StorageManager.exists() to return a boolean immediately.
+  // RPGツクールの StorageManager.exists() は同期的な真偽値を要求する
+  ipcMain.on("existsSaveDataSync", (event, args) => {
+    try {
+      const { saveName } = args;
+      event.returnValue = { exists: store.existsSync(saveName) };
+    } catch (error) {
+      // Always reply, including on I/O errors, so the renderer cannot keep waiting.
+      // 読み取りエラーの場合も必ず応答し、レンダラーの待機を終了させる
+      event.returnValue = { error: { message: error.message, code: error.code } };
+    }
+  });
+
   ipcMain.handle("removeSaveData", (_e, { saveName }) => {
     return store.remove(saveName);
   });
